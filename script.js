@@ -40,7 +40,6 @@ const clear =  document.querySelector('#clear');
 
 
 function first(e){
-    display.textContent = '';
     display.textContent += e.target.textContent;
     displayValue = display.textContent
     firstNumber += e.target.textContent;
@@ -62,14 +61,14 @@ operatorEvent.forEach(element =>{
     element.addEventListener('click',(e)=>{
         if(operator != undefined && secondNumber === ''){
             operator = e.target.textContent
-            display.textContent = `${firstNumber}${operator}`
+            display.textContent = `${firstNumber} ${operator}`
             return;
         }
         
         if(operator != undefined){
             const result = operate(operator, +firstNumber, +secondNumber);
             operator = e.target.textContent
-            display.textContent = `${result}${operator}`
+            display.textContent = `${result} ${operator}`
             firstNumber = result
             secondNumber = ''
             return
@@ -100,11 +99,23 @@ equals.addEventListener('click', ()=>{
 
 
 clear.addEventListener('click', ()=>{
-    display.textContent = "_"
+    display.textContent = ""
     displayValue = display.textContent
     firstNumber = ''
     secondNumber = ''
     operator = undefined
     numbers.forEach(element => element.addEventListener('click', first))
     numbers.forEach(element => element.removeEventListener('click', second))
+});
+
+
+
+numbers.forEach(element => {
+    element.addEventListener('click', function(){
+        element.classList.add('clicked');
+
+        setTimeout(function() {
+            element.classList.remove('clicked');
+        }, 100);
+    });
 });
