@@ -5,6 +5,7 @@
 }
 
 body {
+    background-color: #e5e9e2;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -126,5 +127,5 @@ body {
 }
 
 button.clicked {
-    transform: translateY(5px); 
+    transform: translateY(3px);
 }
