@@ -16,8 +16,8 @@ body {
 .calculator {
     background-color: #afcaa8;
     box-shadow: 0px 20px 0px 0px #819b7a;
-    border-top: #dce9d8 solid 5px;
-    border-right: #dce9d8 solid 5px;
+    border-top: #ecf1e8 solid 5px;
+    border-right: #ecf1e8 solid 5px;
     border-radius: 25px;
     min-height: 50%;
     width: 30%;
