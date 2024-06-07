@@ -38,8 +38,15 @@ const equals = document.querySelector('#equals');
 const operatorEvent = document.querySelectorAll('.operator');
 const clear =  document.querySelector('#clear');
 
+const del = document.querySelector('#delete');
+const period = document.querySelector('#period');
+console.log(period)
 
 function first(e){
+    if(e.target.textContent === period.textContent){
+        period.disabled = true;
+    }
+    console.log(e.target)
     display.textContent += e.target.textContent;
     displayValue = display.textContent
     firstNumber += e.target.textContent;
@@ -47,6 +54,9 @@ function first(e){
     console.log("first" + firstNumber)
 }
 function second(e){
+    if(e.target.textContent === period.textContent){
+        period.disabled = true;
+    }    
     display.textContent += e.target.textContent;
     displayValue = display.textContent
     secondNumber += e.target.textContent;
@@ -59,6 +69,7 @@ numbers.forEach(element => {
 });
 operatorEvent.forEach(element =>{
     element.addEventListener('click',(e)=>{
+        period.disabled = false;
         if(operator != undefined && secondNumber === ''){
             operator = e.target.textContent
             display.textContent = `${firstNumber} ${operator}`
@@ -99,6 +110,7 @@ equals.addEventListener('click', ()=>{
 
 
 clear.addEventListener('click', ()=>{
+    period.disabled = false;
     display.textContent = ""
     displayValue = display.textContent
     firstNumber = ''
@@ -113,9 +125,26 @@ clear.addEventListener('click', ()=>{
 numbers.forEach(element => {
     element.addEventListener('click', function(){
         element.classList.add('clicked');
-
         setTimeout(function() {
             element.classList.remove('clicked');
         }, 100);
     });
 });
+
+
+// WIP
+
+// del.addEventListener('click',(e)=>{
+//     const updated =  display.textContent.slice(0, -1);
+//     // Update the appropriate variable based on the current state
+//     if (operator) {
+//         // If an operator is defined, update the secondNumber variable
+//         secondNumber = updated
+//         display.textContent =  secondNumber
+//         console.log(secondNumber)
+//     } else {
+//         // If no operator is defined, update the firstNumber variable
+//         firstNumber = updated
+//         display.textContent =  firstNumber
+//         console.log(firstNumber)
+//     }})
